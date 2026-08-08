@@ -1,0 +1,53 @@
+name: HYROX İzmir bilet kontrolü
+
+on:
+  schedule:
+    # GitHub Actions'ta en sık aralık 5 dakika. Yoğunlukta birkaç dakika gecikebilir.
+    - cron: '*/5 * * * *'
+  workflow_dispatch: # elle tetikleme
+
+# state.json'a aynı anda iki koşu yazmasın.
+concurrency:
+  group: hyrox-watch
+  cancel-in-progress: false
+
+permissions:
+  contents: write # state.json'ı repoya geri yazmak için
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Kontrol et
+        id: check
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          MAIL_TO: ${{ secrets.MAIL_TO }}
+          MAIL_FROM: ${{ vars.MAIL_FROM }}
+          WATCH_KEYS: ${{ vars.WATCH_KEYS }}
+          REALERT_MINUTES: ${{ vars.REALERT_MINUTES }}
+          HEARTBEAT_HOURS: ${{ vars.HEARTBEAT_HOURS }}
+        run: node check.mjs
+
+      # Kontrol hata verse bile durumu yaz: hata maili zaman damgası orada tutuluyor,
+      # yoksa her koşuda tekrar tekrar hata maili gider.
+      - name: Durumu kaydet
+        if: always()
+        run: |
+          if git diff --quiet -- state.json; then
+            echo "Durum değişmedi."
+            exit 0
+          fi
+          git config user.name  'hyrox-watcher'
+          git config user.email 'hyrox-watcher@users.noreply.github.com'
+          git add state.json
+          git commit -m "durum: $(date -u '+%Y-%m-%dT%H:%M:%SZ')"
+          # Araya başka bir koşu girdiyse üstüne yeniden oynat.
+          git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
