@@ -1,31 +1,30 @@
 {
-  "lastCheckAt": "2026-08-08T16:58:55.350Z",
+  "lastCheckAt": "2026-08-08T16:59:58.156Z",
   "snapshot": [
     {
-      "name": "HYROX DOUBLES WOMEN | Pazar",
-      "key": "DOUBLES_OPEN_W",
+      "name": "HYROX DOUBLES MEN | Pazar",
+      "key": "DOUBLES_OPEN_M",
       "active": false,
-      "remaining": 74
+      "remaining": 97
     },
     {
-      "name": "HYROX DOUBLES WOMEN 2.ATLET | Pazar",
-      "key": "DOUBLES_OPEN_W",
+      "name": "HYROX DOUBLES MEN 2.ATLET | Pazar",
+      "key": "DOUBLES_OPEN_M",
       "active": false,
-      "remaining": 74
+      "remaining": 97
     },
     {
-      "name": "HYROX DOUBLES WOMEN | Cumartesi",
-      "key": "DOUBLES_OPEN_W",
+      "name": "HYROX DOUBLES MEN | Cumartesi",
+      "key": "DOUBLES_OPEN_M",
       "active": true,
-      "remaining": 5
+      "remaining": 0
     },
     {
-      "name": "HYROX DOUBLES WOMEN 2.ATLET | Cumartesi",
-      "key": "DOUBLES_OPEN_W",
+      "name": "HYROX DOUBLES MEN 2.ATLET | Cumartesi",
+      "key": "DOUBLES_OPEN_M",
       "active": true,
-      "remaining": 5
+      "remaining": 0
     }
   ],
-  "available": true,
-  "lastAlertAt": "2026-08-08T16:58:55.350Z"
+  "available": false
 }
