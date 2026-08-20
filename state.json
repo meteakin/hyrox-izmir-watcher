@@ -1,5 +1,5 @@
 {
-  "lastCheckAt": "2026-08-20T10:02:58.318Z",
+  "lastCheckAt": "2026-08-20T10:44:18.146Z",
   "snapshot": [
     {
       "name": "HYROX DOUBLES MEN | Pazar",
@@ -17,16 +17,16 @@
       "name": "HYROX DOUBLES MEN | Cumartesi",
       "key": "DOUBLES_OPEN_M",
       "active": true,
-      "remaining": 6
+      "remaining": 7
     },
     {
       "name": "HYROX DOUBLES MEN 2.ATLET | Cumartesi",
       "key": "DOUBLES_OPEN_M",
       "active": true,
-      "remaining": 6
+      "remaining": 7
     }
   ],
   "available": true,
   "lastHeartbeatAt": "2026-08-15T17:34:14.277Z",
-  "lastAlertAt": "2026-08-20T10:02:58.318Z"
+  "lastAlertAt": "2026-08-20T10:44:18.146Z"
 }
